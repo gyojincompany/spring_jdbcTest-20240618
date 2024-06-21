@@ -67,10 +67,9 @@ public class JdbcController {
 //		int success = memberDao.joinMember(mid, mpw, mname, memail);
 		//success 값이 1이면 sql문 실행 성공 아니면 실패
 		
-		if(success == 1 ) { //회원 가입 성공
-			
-			model.addAttribute("mid", request.getAttribute("mid"));
-			model.addAttribute("mname", request.getAttribute("mname"));
+		if(success == 1 ) { //회원 가입 성공			
+			model.addAttribute("mid", request.getParameter("mid"));
+			model.addAttribute("mname", request.getParameter("mname"));
 			
 			return "joinOk";
 		} else {
