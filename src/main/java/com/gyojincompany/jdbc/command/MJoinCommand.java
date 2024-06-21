@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 
 import com.gyojincompany.jdbc.dao.MemberDao;
 
-public class MJoinCommand {
+public class MJoinCommand implements MCommand{
 	
 	public int execute(Model model) {
 		
