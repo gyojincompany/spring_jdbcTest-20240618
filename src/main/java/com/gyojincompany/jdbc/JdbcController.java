@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.gyojincompany.jdbc.command.MDeleteCommand;
 import com.gyojincompany.jdbc.command.MJoinCommand;
 import com.gyojincompany.jdbc.dao.MemberDao;
 import com.gyojincompany.jdbc.dto.MemberDto;
@@ -54,8 +55,8 @@ public class JdbcController {
 		
 		model.addAttribute("request", request);
 		
-		MJoinCommand mJoinCommand = new MJoinCommand();
-		int success = mJoinCommand.execute(model);
+		MJoinCommand command = new MJoinCommand();
+		int success = command.execute(model);
 		
 //		String mid = request.getParameter("mid");
 //		String mpw = request.getParameter("mpw");
@@ -81,7 +82,31 @@ public class JdbcController {
 		
 	}
 	
+	@RequestMapping(value = "/delete")
+	public String delete() {
+		return "delete";
+	}
 	
+	@RequestMapping(value = "/deleteOk")
+	public String deleteOk(HttpServletRequest request, Model model) {
+		
+		model.addAttribute("request", request);
+		
+		MDeleteCommand command = new MDeleteCommand();
+		int success = command.execute(model);
+		
+		if(success == 1) {//회원 탈퇴 성공
+			
+			model.addAttribute("message", "회원 탈퇴 성공! 안녕히가세요!");
+			
+		} else { //회원 탈퇴 실패
+			
+			model.addAttribute("message", "회원 탈퇴 실패! 다시확인해 주세요!");
+			
+		}
+		
+		return "deleteOk";
+	}
 	
 	
 	
