@@ -18,6 +18,7 @@
 	가입일 : ${memberDto.mdate }<br><br>
 	<input type="submit" value="수정완료">
 	<input type="button" value="회원탈퇴" onclick="javascript:window.location.href='deleteOk?mid=${memberDto.mid}'">
+	<input type="button" value="이전페이지" onclick="javascript:history.go(-1)">	
 	</form>	
 	${error }
 </body>
