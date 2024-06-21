@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.gyojincompany.jdbc.command.MCommand;
 import com.gyojincompany.jdbc.command.MDeleteCommand;
 import com.gyojincompany.jdbc.command.MJoinCommand;
+import com.gyojincompany.jdbc.command.MListCommand;
 import com.gyojincompany.jdbc.command.MSearchCommand;
 import com.gyojincompany.jdbc.dao.MemberDao;
 import com.gyojincompany.jdbc.dto.MemberDto;
@@ -127,6 +128,21 @@ public class JdbcController {
 		
 		return "searchOk";
 	}
+	
+	@RequestMapping(value = "/list")
+	public String list(HttpServletRequest request, Model model) {
+		
+		command = new MListCommand();
+		command.execute(model);
+		
+		return "list";
+	}
+	
+	
+	
+	
+	
+	
 	
 	
 	
